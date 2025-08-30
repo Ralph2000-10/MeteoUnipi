@@ -11,7 +11,7 @@
   <script>
     async function loadWeather() {
       try {
-        const response = await fetch("http://localhost:5000/weather");
+        const response = await fetch("weather.json"); // served by GitHub Pages
         const data = await response.json();
 
         document.getElementById("weather").innerHTML = `
@@ -27,9 +27,7 @@
         console.error(err);
       }
     }
-
     loadWeather();
-    setInterval(loadWeather, 120000); // aggiorna ogni 2 minuti
   </script>
 </body>
 </html>
