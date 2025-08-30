@@ -1,0 +1,15 @@
+git config --global user.name "raffaele"
+git config --global user.email "r.montemurro.eng@gmail.com"
+git init
+git add .
+git commit -m "prima commit"
+git branch -M main
+git remote add origin https://github.com/Ralph2000-10/MeteoUnipi.git
+git push -u origin main
+git status
+
+
+Questi servono per aggiornare sul repository di github i file modificati in locale
+git add .
+git commit -m "Your commit message"
+git push

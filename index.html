@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Meteo Pisa</title>
+</head>
+<body>
+  <h2>Dati Meteo Pisa</h2>
+  <div id="weather">Caricamento...</div>
+
+  <script>
+    async function getWeather() {
+      try {
+        const response = await fetch("http://meteo.dii.unipi.it/pisa/");
+        const text = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, "text/html");
+
+        function extractValue(label) {
+          const lis = [...doc.querySelectorAll("li")];
+          const li = lis.find(el => el.textContent.includes(label));
+          return li ? li.querySelector("span").textContent.trim() : null;
+        }
+
+        const data = {
+          temperatura: extractValue("Temperatura"),
+          pressione: extractValue("Pressione"),
+          umidita: extractValue("Umidità"),
+          radiazione: extractValue("Radiazione"),
+          vento: extractValue("Intensità del vento"),
+        };
+
+        document.getElementById("weather").innerHTML = `
+          <p>🌡️ Temperatura: ${data.temperatura}</p>
+          <p>💧 Umidità: ${data.umidita}</p>
+          <p>📊 Pressione: ${data.pressione}</p>
+          <p>☀️ Radiazione: ${data.radiazione}</p>
+          <p>💨 Vento: ${data.vento}</p>
+          <small>Aggiornato: ${new Date().toLocaleTimeString()}</small>
+        `;
+      } catch (err) {
+        console.error("Errore nel caricamento dei dati:", err);
+      }
+    }
+
+    getWeather();
+    setInterval(getWeather, 120000);
+  </script>
+</body>
+</html>
