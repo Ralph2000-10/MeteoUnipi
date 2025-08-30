@@ -5,6 +5,9 @@ on:
     - cron: "*/5 * * * *"   # every 5 minutes
   workflow_dispatch:        # allow manual runs
 
+permissions:
+  contents: write   # 👈 allow pushing changes
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
