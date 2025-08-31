@@ -1,0 +1,14 @@
+{
+"name": "Meteo Pisa",
+"short_name": "Meteo Pisa",
+"description": "Dati meteo da meteo.dii.unipi.it/pisa con aggiornamento ogni 2 minuti.",
+"start_url": "/<REPO_NAME>/index.html",
+"scope": "/<REPO_NAME>/",
+"display": "standalone",
+"background_color": "#0ea5e9",
+"theme_color": "#0ea5e9",
+"icons": [
+{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+{ "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+]
+}
