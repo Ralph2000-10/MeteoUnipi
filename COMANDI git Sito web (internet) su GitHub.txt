@@ -13,3 +13,20 @@ Questi servono per aggiornare sul repository di github i file modificati in loca
 git add .
 git commit -m "Your commit message"
 git push
+
+
+SE compare questo errore (error: failed to push some refs):
+Raffaele@PC-Raffaele MINGW64 ~/Desktop/MeteoUnipi (main)
+$ git push To https://github.com/Ralph2000-10/MeteoUnipi.git ! [rejected] main -> main (fetch first) error: failed to push some refs to 'https://github.com/Ralph2000-10/MeteoUnipi.git'
+hint: Updates were rejected because the remote contains work that you do not hint: have locally. This is usually caused by another repository pushing to hint: the same ref. If you want to integrate the remote changes, use hint: 'git pull' before pushing again. hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+USARE questi comandi perchè vuol dire che ci sono delle commit create da GitHub Actions che non ci sono sul repository locale (ciò accade ad esempio quando uso un workflow su github che ogni tot minuti va a prendere dati da una pagina web; es file weather.json del mio sito MeteoUnipi):
+
+git pull origin main --rebase
+git push origin main
+
+Explanation:
+git pull origin main --rebase → brings down the new commits from GitHub (like the workflow’s updates to weather.json) and reapplies your changes on top.
+
+git push origin main → now succeeds because you’re no longer behind.
+
