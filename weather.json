@@ -1,7 +1,7 @@
 {
-  "temperatura": "--- °C",
+  "temperatura": "12.8 °C",
   "pressione": "1008.7 mb",
-  "umidita": "---%",
-  "radiazione": "--- W/mq",
-  "vento": "0.0 km/h"
+  "umidita": "56%",
+  "radiazione": "114 W/mq",
+  "vento": "8.0 km/h"
 }
